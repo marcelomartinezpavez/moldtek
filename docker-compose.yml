@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: moldtek_postgres
+    environment:
+      POSTGRES_DB: moldtek_db
+      POSTGRES_USER: moldtek_user
+      POSTGRES_PASSWORD: moldtek_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U moldtek_user -d moldtek_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: moldtek_backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/moldtek_db
+      SPRING_DATASOURCE_USERNAME: moldtek_user
+      SPRING_DATASOURCE_PASSWORD: moldtek_pass
+      MOLDTEK_JWT_SECRET: moldtekSecretKeyForJWT2024MustBe256BitsLongForHS256Algorithm
+      MOLDTEK_JWT_EXPIRATION: 86400000
+      MOLDTEK_CORS_ALLOWED_ORIGINS: http://localhost:4200
+    ports:
+      - "8080:8080"
+    volumes:
+      - upload_data:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: moldtek_frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  upload_data:

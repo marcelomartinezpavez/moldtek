@@ -1,0 +1,163 @@
+// Global styles
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Moldtek brand colors
+:root {
+  --moldtek-green: #2E7D32;
+  --moldtek-green-light: #4CAF50;
+  --moldtek-green-dark: #1B5E20;
+  --moldtek-accent: #FF6F00;
+}
+
+// Page container
+.page-container {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+// Card styles
+.content-card {
+  border-radius: 8px;
+  overflow: hidden;
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    gap: 16px;
+    flex-wrap: wrap;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// Table styles
+.mat-mdc-table {
+  width: 100%;
+
+  .mat-mdc-row:hover {
+    background-color: rgba(0,0,0,0.04);
+  }
+}
+
+// Status chips
+.status-active {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-inactive {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.low-stock {
+  color: #f44336;
+  font-weight: 500;
+}
+
+// Form styles
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+
+  mat-form-field {
+    flex: 1;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+// Sidebar styles
+.sidenav-container {
+  height: 100%;
+}
+
+// Breadcrumb
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(0,0,0,0.54);
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+
+  span.active {
+    color: rgba(0,0,0,0.87);
+    font-weight: 500;
+  }
+}
+
+// Empty state
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: rgba(0,0,0,0.38);
+  text-align: center;
+
+  mat-icon {
+    font-size: 64px;
+    height: 64px;
+    width: 64px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0 0 16px;
+  }
+}
+
+// Loading overlay
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.7);
+  z-index: 10;
+}
+
+// Scrollable table wrapper
+.table-wrapper {
+  overflow-x: auto;
+}
+
+// Utility
+.text-muted { color: rgba(0,0,0,0.54); }
+.text-success { color: #2e7d32; }
+.text-danger { color: #c62828; }
+.text-warning { color: #f57c00; }
+.fw-500 { font-weight: 500; }
+.mt-16 { margin-top: 16px; }
+.mb-0 { margin-bottom: 0; }
