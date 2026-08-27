@@ -1,6 +1,7 @@
 C:\Proyectos\moldtek\backend\src\main\java\cl\moldtek\backend\config\DataInitializer.java
 C:\Proyectos\moldtek\backend\src\main\java\cl\moldtek\backend\config\JwtAuthenticationFilter.java
 C:\Proyectos\moldtek\backend\src\main\java\cl\moldtek\backend\config\SecurityConfig.java
+C:\Proyectos\moldtek\backend\src\main\java\cl\moldtek\backend\config\UserDetailsServiceImpl.java
 C:\Proyectos\moldtek\backend\src\main\java\cl\moldtek\backend\controller\AuthController.java
 C:\Proyectos\moldtek\backend\src\main\java\cl\moldtek\backend\controller\BranchController.java
 C:\Proyectos\moldtek\backend\src\main\java\cl\moldtek\backend\controller\CompanyController.java

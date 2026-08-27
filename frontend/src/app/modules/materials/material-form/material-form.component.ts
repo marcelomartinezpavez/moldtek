@@ -7,7 +7,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { NgFor } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { MaterialCategoryDto, MaterialDto, UNITS_OF_MEASURE } from '../../../core/models/material.model';
@@ -17,7 +16,7 @@ import { MaterialCategoryDto, MaterialDto, UNITS_OF_MEASURE } from '../../../cor
   standalone: true,
   imports: [
     ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule,
-    MatSelectModule, MatButtonModule, MatIconModule, MatDividerModule, NgFor
+    MatSelectModule, MatButtonModule, MatIconModule, MatDividerModule
   ],
   template: `
     <h2 mat-dialog-title>

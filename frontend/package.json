@@ -22,10 +22,11 @@
     "@angular/router": "^22.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.7.0",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^22.0.0",
+    "@angular/build": "^22.1.6",
     "@angular/cli": "^22.0.0",
     "@angular/compiler-cli": "^22.0.0",
     "@types/jasmine": "~5.1.0",
@@ -35,6 +36,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.5.0"
+    "typescript": "~6.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }

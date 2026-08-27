@@ -82,8 +82,8 @@ export class BranchFormComponent implements OnInit {
     if (this.form.invalid) return;
     this.saving = true;
     const obs = this.data.branch
-      ? this.api.updateBranch(this.data.branch.id, this.form.value)
-      : this.api.createBranch(this.form.value);
+      ? this.api.updateBranch(this.data.branch.id, this.form.value as any)
+      : this.api.createBranch(this.form.value as any);
     obs.subscribe({
       next: () => { this.notify.success(this.data.branch ? 'Sucursal actualizada' : 'Sucursal creada'); this.dialogRef.close(true); },
       error: err => { this.notify.error(err.message); this.saving = false; }
@@ -238,7 +238,7 @@ export class CompanyComponent implements OnInit {
   saveCompany(): void {
     if (this.companyForm.invalid) return;
     this.savingCompany.set(true);
-    this.api.updateCompany(this.companyForm.value as any).subscribe({
+    this.api.updateCompany(this.companyForm.getRawValue() as any).subscribe({
       next: () => { this.notify.success('Empresa actualizada'); this.savingCompany.set(false); },
       error: err => { this.notify.error(err.message); this.savingCompany.set(false); }
     });

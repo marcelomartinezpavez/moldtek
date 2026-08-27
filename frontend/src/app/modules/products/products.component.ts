@@ -12,7 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { DecimalPipe, NgIf } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { ApiService } from '../../core/services/api.service';
 import { NotificationService } from '../../core/services/notification.service';
 import { ProductDto, ProductCategoryDto } from '../../core/models/template.model';
@@ -23,7 +23,7 @@ import { ProductDto, ProductCategoryDto } from '../../core/models/template.model
   imports: [
     MatCardModule, MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule,
     MatInputModule, MatFormFieldModule, MatSelectModule, MatChipsModule, MatTooltipModule,
-    MatProgressBarModule, MatDialogModule, FormsModule, DecimalPipe, NgIf
+    MatProgressBarModule, MatDialogModule, FormsModule, DecimalPipe
   ],
   template: `
     <div class="page-container">
@@ -86,9 +86,9 @@ import { ProductDto, ProductCategoryDto } from '../../core/models/template.model
               <td mat-cell *matCellDef="let row">{{ row.finishType || '—' }}</td>
             </ng-container>
             <ng-container matColumnDef="price">
-              <th mat-header-cell *matHeaderCellDef>Precio</th>
+              <th mat-header-cell *matHeaderCellDef>Precio ($)</th>
               <td mat-cell *matCellDef="let row" style="text-align:right">
-                @if (row.price) { ${{ row.price | number:'1.0-0' }} }
+                @if (row.price) { {{ row.price | number:'1.0-0' }} }
                 @else { <span class="text-muted">—</span> }
               </td>
             </ng-container>

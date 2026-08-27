@@ -3,14 +3,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { NgFor } from '@angular/common';
 import { ApiService } from '../../core/services/api.service';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, MatButtonModule, RouterLink, NgFor],
+  imports: [MatCardModule, MatIconModule, MatButtonModule, RouterLink],
   template: `
     <div class="page-container">
       <div class="welcome-banner">

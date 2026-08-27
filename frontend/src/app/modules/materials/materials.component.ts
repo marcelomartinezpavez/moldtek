@@ -13,7 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule } from '@angular/forms';
-import { DecimalPipe, NgIf } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { ApiService } from '../../core/services/api.service';
 import { NotificationService } from '../../core/services/notification.service';
 import { MaterialDto, MaterialCategoryDto } from '../../core/models/material.model';
@@ -25,7 +25,7 @@ import { MaterialFormComponent } from './material-form/material-form.component';
   imports: [
     MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButtonModule,
     MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatDialogModule,
-    MatChipsModule, MatTooltipModule, MatProgressBarModule, FormsModule, DecimalPipe, NgIf
+    MatChipsModule, MatTooltipModule, MatProgressBarModule, FormsModule, DecimalPipe
   ],
   template: `
     <div class="page-container">
@@ -86,9 +86,9 @@ import { MaterialFormComponent } from './material-form/material-form.component';
             </ng-container>
 
             <ng-container matColumnDef="unitPrice">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio Unit.</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio Unit. ($)</th>
               <td mat-cell *matCellDef="let row" class="text-right">
-                ${{ row.unitPrice | number:'1.0-0' }}
+                {{ row.unitPrice | number:'1.0-0' }}
               </td>
             </ng-container>
 

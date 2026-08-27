@@ -13,7 +13,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
-import { NgIf, NgFor } from '@angular/common';
 import { ApiService } from '../../core/services/api.service';
 import { NotificationService } from '../../core/services/notification.service';
 import { AuthService } from '../../core/services/auth.service';
@@ -33,7 +32,7 @@ const ROLES = [
   standalone: true,
   imports: [
     ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule,
-    MatSelectModule, MatButtonModule, MatIconModule, MatDividerModule, NgFor
+    MatSelectModule, MatButtonModule, MatIconModule, MatDividerModule
   ],
   template: `
     <h2 mat-dialog-title>
@@ -171,7 +170,7 @@ export class UserFormComponent implements OnInit {
   imports: [
     MatCardModule, MatTableModule, MatButtonModule, MatIconModule, MatInputModule,
     MatFormFieldModule, MatChipsModule, MatTooltipModule, MatProgressBarModule,
-    MatDialogModule, FormsModule, NgIf, NgFor
+    MatDialogModule, FormsModule
   ],
   template: `
     <div class="page-container">

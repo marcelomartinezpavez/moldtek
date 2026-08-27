@@ -15,7 +15,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule } from '@angular/forms';
-import { NgIf, DecimalPipe } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { TemplateDto, TemplateMaterialDto, CreateTemplateRequest, ProductDto } from '../../../core/models/template.model';
@@ -28,8 +27,7 @@ import { MaterialDto } from '../../../core/models/material.model';
     ReactiveFormsModule, FormsModule,
     MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule,
     MatButtonModule, MatIconModule, MatTableModule, MatDividerModule,
-    MatProgressBarModule, MatTooltipModule, MatAutocompleteModule,
-    NgIf, DecimalPipe
+    MatProgressBarModule, MatTooltipModule, MatAutocompleteModule
   ],
   template: `
     <div class="page-container">

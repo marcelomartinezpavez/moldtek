@@ -14,7 +14,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
-import { DecimalPipe, NgIf, NgFor } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { ApiService } from '../../core/services/api.service';
 import { NotificationService } from '../../core/services/notification.service';
 import { BranchDto } from '../../core/models/company.model';
@@ -76,7 +76,7 @@ export class StockUpdateFormComponent {
 @Component({
   selector: 'app-transfer-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule, NgFor],
+  imports: [ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule],
   template: `
     <h2 mat-dialog-title><mat-icon>swap_horiz</mat-icon> Transferencia de Stock</h2>
     <mat-dialog-content>
@@ -151,7 +151,7 @@ export class TransferFormComponent {
   imports: [
     MatCardModule, MatTableModule, MatTabsModule, MatButtonModule, MatIconModule,
     MatInputModule, MatFormFieldModule, MatSelectModule, MatChipsModule, MatTooltipModule,
-    MatProgressBarModule, MatDialogModule, FormsModule, DecimalPipe, NgIf
+    MatProgressBarModule, MatDialogModule, FormsModule, DecimalPipe
   ],
   template: `
     <div class="page-container">

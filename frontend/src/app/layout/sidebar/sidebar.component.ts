@@ -2,7 +2,6 @@ import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { NgFor } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 
 interface NavItem {
@@ -15,7 +14,7 @@ interface NavItem {
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, MatListModule, MatIconModule, NgFor],
+  imports: [RouterLink, RouterLinkActive, MatListModule, MatIconModule],
   template: `
     <div class="sidebar-brand">
       <img src="assets/images/logo.png" alt="Moldtek" onerror="this.style.display='none'" style="height:40px">
