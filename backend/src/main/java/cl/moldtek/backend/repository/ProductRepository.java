@@ -18,7 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         SELECT p FROM Product p
         WHERE p.company.id = :companyId
           AND p.active = true
-          AND (:search IS NULL OR LOWER(p.name) LIKE LOWER(CONCAT('%', :search, '%'))
+          AND (:search = '' OR LOWER(p.name) LIKE LOWER(CONCAT('%', :search, '%'))
                OR LOWER(p.code) LIKE LOWER(CONCAT('%', :search, '%'))
                OR LOWER(p.modelName) LIKE LOWER(CONCAT('%', :search, '%')))
           AND (:categoryId IS NULL OR p.category.id = :categoryId)

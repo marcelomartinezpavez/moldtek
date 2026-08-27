@@ -21,7 +21,7 @@ public interface MaterialRepository extends JpaRepository<Material, Long> {
         SELECT m FROM Material m
         WHERE m.company.id = :companyId
           AND m.active = true
-          AND (:search IS NULL OR LOWER(m.name) LIKE LOWER(CONCAT('%', :search, '%'))
+          AND (:search = '' OR LOWER(m.name) LIKE LOWER(CONCAT('%', :search, '%'))
                OR LOWER(m.code) LIKE LOWER(CONCAT('%', :search, '%')))
           AND (:categoryId IS NULL OR m.category.id = :categoryId)
         ORDER BY m.name

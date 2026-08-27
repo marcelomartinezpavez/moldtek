@@ -31,7 +31,7 @@ public class TemplateService {
     public PageResponse<TemplateDto> findAll(Long companyId, String search, Long productId, int page, int size) {
         Page<Template> result = templateRepository.findByFilters(
             companyId,
-            search == null || search.isBlank() ? null : search,
+            search == null || search.isBlank() ? "" : search,
             productId,
             PageRequest.of(page, size)
         );

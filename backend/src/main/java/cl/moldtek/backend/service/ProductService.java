@@ -30,7 +30,7 @@ public class ProductService {
     public PageResponse<ProductDto> findAll(Long companyId, String search, Long categoryId, int page, int size) {
         Page<Product> result = productRepository.findByFilters(
             companyId,
-            search == null || search.isBlank() ? null : search,
+            search == null || search.isBlank() ? "" : search,
             categoryId,
             PageRequest.of(page, size)
         );

@@ -18,7 +18,7 @@ public interface TemplateRepository extends JpaRepository<Template, Long> {
         SELECT t FROM Template t
         WHERE t.company.id = :companyId
           AND t.active = true
-          AND (:search IS NULL OR LOWER(t.name) LIKE LOWER(CONCAT('%', :search, '%'))
+          AND (:search = '' OR LOWER(t.name) LIKE LOWER(CONCAT('%', :search, '%'))
                OR LOWER(t.code) LIKE LOWER(CONCAT('%', :search, '%')))
           AND (:productId IS NULL OR t.product.id = :productId)
         ORDER BY t.name
