@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;2ce5d9ad05b2960e88ea9083c5d7e3a583f08fba72e6f91cb405dc3d31151dad;C:/Proyectos/moldtek/frontend/src/app/modules/products/product-form/product-form.component.ts"],
+  "sourcesContent": [".product-form { display:flex; flex-direction:column; gap:0; min-width:640px; }\n    .form-row { display:flex; gap:12px; } .form-row mat-form-field { flex:1; }\n    mat-dialog-content { max-height:75vh; }"],
+  "mappings": ";AAAA,CAAC;AAAe,WAAQ;AAAM,kBAAe;AAAQ,OAAI;AAAG,aAAU;AAAO;AACzE,CAAC;AAAW,WAAQ;AAAM,OAAI;AAAM;AAAE,CAArC,SAA+C;AAAiB,QAAK;AAAG;AACzE;AAAqB,cAAW;AAAM;",
+  "names": []
+}

@@ -17,7 +17,7 @@ interface NavItem {
   imports: [RouterLink, RouterLinkActive, MatListModule, MatIconModule],
   template: `
     <div class="sidebar-brand">
-      <img src="assets/images/logo.png" alt="Moldtek" onerror="this.style.display='none'" style="height:40px">
+      <img src="assets/images/logo.svg" alt="Moldtek" style="height:40px">
       <span>MOLDTEK</span>
     </div>
 

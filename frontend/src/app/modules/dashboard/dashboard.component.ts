@@ -105,18 +105,21 @@ export class DashboardComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.api.getMaterials(undefined, undefined, 0, 1).subscribe(r => {
-      this.stats[0].value = r.totalElements.toString();
+    this.api.getMaterials(undefined, undefined, 0, 1).subscribe({
+      next: r => { this.stats[0].value = r.totalElements.toString(); },
+      error: () => { this.stats[0].value = '0'; }
     });
-    this.api.getProducts(undefined, undefined, 0, 1).subscribe(r => {
-      this.stats[1].value = r.totalElements.toString();
+    this.api.getProducts(undefined, undefined, 0, 1).subscribe({
+      next: r => { this.stats[1].value = r.totalElements.toString(); },
+      error: () => { this.stats[1].value = '0'; }
     });
-    this.api.getTemplates(undefined, undefined, 0, 1).subscribe(r => {
-      this.stats[2].value = r.totalElements.toString();
+    this.api.getTemplates(undefined, undefined, 0, 1).subscribe({
+      next: r => { this.stats[2].value = r.totalElements.toString(); },
+      error: () => { this.stats[2].value = '0'; }
     });
-    this.api.getLowStock().subscribe(items => {
-      this.lowStockItems.set(items);
-      this.stats[3].value = items.length.toString();
+    this.api.getLowStock().subscribe({
+      next: items => { this.lowStockItems.set(items); this.stats[3].value = items.length.toString(); },
+      error: () => { this.stats[3].value = '0'; }
     });
   }
 }

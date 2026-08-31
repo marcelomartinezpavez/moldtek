@@ -38,6 +38,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         String jwt = authHeader.substring(7);
+        boolean unauthorized = false;
         try {
             String username = jwtService.extractUsername(jwt);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -48,10 +49,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     );
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authToken);
+                } else {
+                    unauthorized = true;
                 }
             }
-        } catch (Exception ignored) {
-            // Invalid token — continue without authentication
+        } catch (RuntimeException e) {
+            unauthorized = true;
+        }
+
+        if (unauthorized) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setContentType("application/json");
+            response.getWriter().write("{\"error\":\"Token expirado o inv\\u00e1lido\"}");
+            return;
         }
 
         filterChain.doFilter(request, response);

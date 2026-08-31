@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;9652dc8f4c1e9cce560476048e6c319ce4ba1e5d818fb950b98d839704db6a31;C:/Proyectos/moldtek/frontend/src/app/modules/materials/material-form/material-form.component.ts"],
+  "sourcesContent": ["\n    .material-form { display: flex; flex-direction: column; gap: 0; min-width: 560px; }\n    .full-width { width: 100%; }\n    .form-row { display: flex; gap: 16px; }\n    .form-row mat-form-field { flex: 1; }\n    mat-dialog-content { max-height: 70vh; }\n  "],
+  "mappings": ";AACI,CAAC;AAAgB,WAAS;AAAM,kBAAgB;AAAQ,OAAK;AAAG,aAAW;AAAO;AAClF,CAAC;AAAa,SAAO;AAAM;AAC3B,CAAC;AAAW,WAAS;AAAM,OAAK;AAAM;AACtC,CADC,SACS;AAAiB,QAAM;AAAG;AACpC;AAAqB,cAAY;AAAM;",
+  "names": []
+}

@@ -39,25 +39,25 @@
 
  :: Spring Boot ::                (v3.4.1)
 
-2026-08-27T18:41:17.738-04:00  INFO 29668 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : Starting MoldtekBackendApplication using Java 17.0.12 with PID 29668 (C:\Proyectos\moldtek\backend\target\classes started by marce in C:\Proyectos\moldtek\backend)
-2026-08-27T18:41:17.741-04:00 DEBUG 29668 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : Running with Spring Boot v3.4.1, Spring v6.2.1
-2026-08-27T18:41:17.741-04:00  INFO 29668 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-08-27T18:41:18.594-04:00  INFO 29668 --- [moldtek-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-27T18:41:18.706-04:00  INFO 29668 --- [moldtek-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 12 JPA repository interfaces.
-2026-08-27T18:41:19.543-04:00  INFO 29668 --- [moldtek-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-08-27T18:41:19.570-04:00  INFO 29668 --- [moldtek-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-08-27T18:41:19.571-04:00  INFO 29668 --- [moldtek-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2026-08-27T18:41:19.653-04:00  INFO 29668 --- [moldtek-backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2026-08-27T18:41:19.654-04:00  INFO 29668 --- [moldtek-backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1865 ms
-2026-08-27T18:41:19.793-04:00  INFO 29668 --- [moldtek-backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-08-27T18:41:19.854-04:00  INFO 29668 --- [moldtek-backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2026-08-27T18:41:19.888-04:00  INFO 29668 --- [moldtek-backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-08-27T18:41:20.130-04:00  INFO 29668 --- [moldtek-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-27T18:41:20.154-04:00  INFO 29668 --- [moldtek-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-08-27T18:41:20.339-04:00  INFO 29668 --- [moldtek-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7fe87c0e
-2026-08-27T18:41:20.340-04:00  INFO 29668 --- [moldtek-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-08-27T18:41:20.379-04:00  WARN 29668 --- [moldtek-backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-08-27T18:41:20.395-04:00  INFO 29668 --- [moldtek-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-08-31T09:39:49.052-04:00  INFO 26324 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : Starting MoldtekBackendApplication using Java 17.0.12 with PID 26324 (C:\Proyectos\moldtek\backend\target\classes started by marce in C:\Proyectos\moldtek\backend)
+2026-08-31T09:39:49.062-04:00 DEBUG 26324 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : Running with Spring Boot v3.4.1, Spring v6.2.1
+2026-08-31T09:39:49.064-04:00  INFO 26324 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-08-31T09:39:51.473-04:00  INFO 26324 --- [moldtek-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-31T09:39:51.741-04:00  INFO 26324 --- [moldtek-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 243 ms. Found 12 JPA repository interfaces.
+2026-08-31T09:39:53.691-04:00  INFO 26324 --- [moldtek-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-08-31T09:39:53.728-04:00  INFO 26324 --- [moldtek-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-31T09:39:53.729-04:00  INFO 26324 --- [moldtek-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-08-31T09:39:53.872-04:00  INFO 26324 --- [moldtek-backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-08-31T09:39:53.874-04:00  INFO 26324 --- [moldtek-backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4687 ms
+2026-08-31T09:39:54.169-04:00  INFO 26324 --- [moldtek-backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-31T09:39:54.328-04:00  INFO 26324 --- [moldtek-backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-08-31T09:39:54.424-04:00  INFO 26324 --- [moldtek-backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-08-31T09:39:55.126-04:00  INFO 26324 --- [moldtek-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-31T09:39:55.207-04:00  INFO 26324 --- [moldtek-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-31T09:39:55.679-04:00  INFO 26324 --- [moldtek-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6e7e0259
+2026-08-31T09:39:55.681-04:00  INFO 26324 --- [moldtek-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-31T09:39:55.770-04:00  WARN 26324 --- [moldtek-backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-31T09:39:55.824-04:00  INFO 26324 --- [moldtek-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 18.3
@@ -65,29 +65,16 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-08-27T18:41:21.641-04:00  INFO 29668 --- [moldtek-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-08-27T18:41:21.911-04:00  INFO 29668 --- [moldtek-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-27T18:41:22.197-04:00  INFO 29668 --- [moldtek-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-08-27T18:41:22.679-04:00 DEBUG 29668 --- [moldtek-backend] [           main] c.m.b.config.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
-2026-08-27T18:41:22.851-04:00  INFO 29668 --- [moldtek-backend] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2026-08-27T18:41:22.852-04:00  WARN 29668 --- [moldtek-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2026-08-27T18:41:23.639-04:00  WARN 29668 --- [moldtek-backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-08-27T18:41:24.283-04:00  INFO 29668 --- [moldtek-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
-2026-08-27T18:41:24.290-04:00  INFO 29668 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : Started MoldtekBackendApplication in 7.045 seconds (process running for 7.429)
-2026-08-27T18:41:24.365-04:00  INFO 29668 --- [moldtek-backend] [           main] c.m.backend.config.DataInitializer       : Roles initialized
-2026-08-27T18:41:38.366-04:00  INFO 29668 --- [moldtek-backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-08-27T18:41:38.367-04:00  INFO 29668 --- [moldtek-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-08-27T18:41:38.368-04:00  INFO 29668 --- [moldtek-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:49 min
-[INFO] Finished at: 2026-08-27T18:43:00-04:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.4.1:run (default-cli) on project moldtek-backend: Process terminated with exit code: 1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+2026-08-31T09:39:59.363-04:00  INFO 26324 --- [moldtek-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-31T09:40:00.388-04:00  INFO 26324 --- [moldtek-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-31T09:40:01.221-04:00  INFO 26324 --- [moldtek-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-31T09:40:02.551-04:00 DEBUG 26324 --- [moldtek-backend] [           main] c.m.b.config.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-08-31T09:40:02.962-04:00  INFO 26324 --- [moldtek-backend] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-08-31T09:40:02.963-04:00  WARN 26324 --- [moldtek-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-08-31T09:40:05.472-04:00  WARN 26324 --- [moldtek-backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-31T09:40:06.947-04:00  INFO 26324 --- [moldtek-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2026-08-31T09:40:06.963-04:00  INFO 26324 --- [moldtek-backend] [           main] c.m.backend.MoldtekBackendApplication    : Started MoldtekBackendApplication in 19.251 seconds (process running for 20.586)
+2026-08-31T09:40:07.118-04:00  INFO 26324 --- [moldtek-backend] [           main] c.m.backend.config.DataInitializer       : Roles initialized
+2026-08-31T09:40:25.231-04:00  INFO 26324 --- [moldtek-backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-31T09:40:25.232-04:00  INFO 26324 --- [moldtek-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-31T09:40:25.234-04:00  INFO 26324 --- [moldtek-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;f834466c54bfaa184211c5fd54de428b3e5ae51c7abce23561808362321985fb;C:/Proyectos/moldtek/frontend/src/app/modules/materials/materials.component.ts"],
+  "sourcesContent": [".text-right { text-align: right; } mat-chip { font-size: 0.75rem; }"],
+  "mappings": ";AAAA,CAAC;AAAa,cAAY;AAAO;AAAE;AAAW,aAAW;AAAS;",
+  "names": []
+}

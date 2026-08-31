@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;9c22d6565a4eafce48804470a11aa9e8758854c213140200ed0afd9ceda36ad2;C:/Proyectos/moldtek/frontend/src/app/modules/inventory/inventory.component.ts"],
+  "sourcesContent": [".low-stock-row { background: #fff8f8; } .text-muted { color: rgba(0,0,0,0.5); }"],
+  "mappings": ";AAAA,CAAC;AAAgB,cAAY;AAAS;AAAE,CAAC;AAAa,SAAO,KAAK,CAAC,EAAC,CAAC,EAAC,CAAC,EAAC;AAAM;",
+  "names": []
+}

@@ -1,5 +1,5 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,14 +12,18 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { startWith } from 'rxjs/operators';
 import { ApiService } from '../../core/services/api.service';
 import { NotificationService } from '../../core/services/notification.service';
 import { BranchDto } from '../../core/models/company.model';
 import { MaterialDto } from '../../core/models/material.model';
 
+// ── Dialog: actualizar stock de un item ya existente en inventario ────────────
 @Component({
   selector: 'app-stock-update-form',
   standalone: true,
@@ -73,6 +77,128 @@ export class StockUpdateFormComponent {
   }
 }
 
+// ── Dialog: ingresar stock inicial para un material del catálogo ──────────────
+@Component({
+  selector: 'app-stock-entry-form',
+  standalone: true,
+  imports: [
+    ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule,
+    MatAutocompleteModule, MatButtonModule, MatIconModule
+  ],
+  template: `
+    <h2 mat-dialog-title><mat-icon>add_box</mat-icon> Ingresar Stock</h2>
+    <mat-dialog-content>
+      <p style="margin:0 0 12px;color:rgba(0,0,0,.6)">Sucursal: <strong>{{ data.branchName }}</strong></p>
+      <form [formGroup]="form" style="display:flex;flex-direction:column;gap:0;min-width:360px">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Material *</mat-label>
+          <input matInput [formControl]="materialCtrl" [matAutocomplete]="auto"
+                 placeholder="Buscar por código o nombre...">
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayMaterial"
+                            (optionSelected)="onMaterialSelected()">
+            @for (m of filteredMaterials(); track m.id) {
+              <mat-option [value]="m">
+                <span style="font-weight:600">{{ m.code }}</span> — {{ m.name }}
+                <span style="color:rgba(0,0,0,.4);font-size:.8rem;margin-left:4px">({{ m.unitOfMeasure }})</span>
+              </mat-option>
+            }
+            @if (filteredMaterials().length === 0) {
+              <mat-option disabled>Sin resultados</mat-option>
+            }
+          </mat-autocomplete>
+          @if (form.get('materialId')?.invalid && form.get('materialId')?.touched) {
+            <mat-error>Selecciona un material de la lista</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cantidad *</mat-label>
+          <input matInput type="number" formControlName="quantity" min="0" step="0.01">
+          <span matSuffix>{{ selectedUnit() }}</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Stock mínimo</mat-label>
+          <input matInput type="number" formControlName="minimumStock" min="0" step="0.01">
+          <mat-hint>Alerta cuando el stock caiga bajo este valor</mat-hint>
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-raised-button color="primary" (click)="save()" [disabled]="!canSave() || saving">
+        <mat-icon>save</mat-icon> {{ saving ? 'Guardando...' : 'Ingresar' }}
+      </button>
+    </mat-dialog-actions>
+  `
+})
+export class StockEntryFormComponent {
+  private fb = inject(FormBuilder);
+  private api = inject(ApiService);
+  private notify = inject(NotificationService);
+  private dialogRef = inject(MatDialogRef<StockEntryFormComponent>);
+  data: { branchId: number; branchName: string; materials: MaterialDto[] } = inject(MAT_DIALOG_DATA);
+
+  saving = false;
+  materialCtrl = new FormControl<string | MaterialDto>('');
+  form = this.fb.group({
+    materialId:   [null as number | null, Validators.required],
+    quantity:     [null as number | null, [Validators.required, Validators.min(0)]],
+    minimumStock: [0]
+  });
+
+  private searchValue = toSignal(
+    this.materialCtrl.valueChanges.pipe(startWith('')),
+    { initialValue: '' }
+  );
+
+  filteredMaterials = computed(() => {
+    const raw = this.searchValue();
+    const q = typeof raw === 'string' ? raw.toLowerCase() : '';
+    return this.data.materials
+      .filter(m => m.name.toLowerCase().includes(q) || m.code.toLowerCase().includes(q))
+      .slice(0, 30);
+  });
+
+  selectedUnit = computed(() => {
+    const raw = this.searchValue();
+    if (raw && typeof raw === 'object') return (raw as MaterialDto).unitOfMeasure ?? '';
+    return '';
+  });
+
+  displayMaterial = (m: MaterialDto | string | null): string => {
+    if (!m) return '';
+    if (typeof m === 'string') return m;
+    return `${m.code} — ${m.name}`;
+  };
+
+  onMaterialSelected(): void {
+    const val = this.materialCtrl.value;
+    if (val && typeof val === 'object') {
+      this.form.patchValue({ materialId: (val as MaterialDto).id });
+    }
+  }
+
+  canSave(): boolean {
+    const matId = this.form.value.materialId;
+    const qty = this.form.value.quantity;
+    return !!matId && qty !== null && qty !== undefined && qty >= 0;
+  }
+
+  save(): void {
+    if (!this.canSave()) return;
+    this.saving = true;
+    const { materialId, quantity, minimumStock } = this.form.value;
+    this.api.updateStock(this.data.branchId, materialId!, quantity!, minimumStock ?? undefined).subscribe({
+      next: () => { this.notify.success('Stock ingresado correctamente'); this.dialogRef.close(true); },
+      error: err => { this.notify.error(err.message); this.saving = false; }
+    });
+  }
+}
+
+// ── Dialog: transferencia de stock entre sucursales ───────────────────────────
 @Component({
   selector: 'app-transfer-form',
   standalone: true,
@@ -145,13 +271,14 @@ export class TransferFormComponent {
   }
 }
 
+// ── Componente principal de Inventario ───────────────────────────────────────
 @Component({
   selector: 'app-inventory',
   standalone: true,
   imports: [
     MatCardModule, MatTableModule, MatTabsModule, MatButtonModule, MatIconModule,
     MatInputModule, MatFormFieldModule, MatSelectModule, MatChipsModule, MatTooltipModule,
-    MatProgressBarModule, MatDialogModule, FormsModule, DecimalPipe
+    MatProgressBarModule, MatDialogModule, MatDividerModule, FormsModule, DecimalPipe
   ],
   template: `
     <div class="page-container">
@@ -159,7 +286,7 @@ export class TransferFormComponent {
         <div class="card-header">
           <h2><mat-icon style="vertical-align:middle;margin-right:8px">warehouse</mat-icon>Inventario por Sucursal</h2>
           <div class="header-actions">
-            <mat-form-field appearance="outline" style="width:220px" subscriptSizing="dynamic">
+            <mat-form-field appearance="outline" style="width:240px" subscriptSizing="dynamic">
               <mat-label>Sucursal</mat-label>
               <mat-select [(ngModel)]="selectedBranch" (ngModelChange)="loadInventory()">
                 @for (b of branches(); track b.id) {
@@ -172,7 +299,12 @@ export class TransferFormComponent {
               <input matInput [(ngModel)]="searchText" (ngModelChange)="applyFilter()" placeholder="Material...">
               <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
-            <button mat-raised-button color="accent" (click)="openTransferForm()">
+            <button mat-raised-button color="primary" (click)="openStockEntry()" [disabled]="!selectedBranch"
+                    matTooltip="Ingresar stock para un material del catálogo">
+              <mat-icon>add</mat-icon> Ingresar stock
+            </button>
+            <button mat-stroked-button color="accent" (click)="openTransferForm()" [disabled]="branches().length < 2"
+                    [matTooltip]="branches().length < 2 ? 'Se necesitan al menos 2 sucursales para transferir' : 'Transferir stock entre sucursales'">
               <mat-icon>swap_horiz</mat-icon> Transferir
             </button>
           </div>
@@ -180,11 +312,10 @@ export class TransferFormComponent {
 
         @if (loading()) { <mat-progress-bar mode="indeterminate" /> }
 
-        <!-- Low stock alert -->
         @if (lowStockCount() > 0) {
           <div style="margin:0 16px 8px;padding:8px 16px;background:#fff3e0;border-left:4px solid #ff9800;border-radius:4px;display:flex;align-items:center;gap:8px">
             <mat-icon style="color:#ff9800">warning</mat-icon>
-            <span><strong>{{ lowStockCount() }}</strong> materiales con stock bajo el mínimo</span>
+            <span><strong>{{ lowStockCount() }}</strong> material(es) con stock bajo el mínimo en esta sucursal</span>
           </div>
         }
 
@@ -224,9 +355,9 @@ export class TransferFormComponent {
               </td>
             </ng-container>
             <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary" (click)="openStockUpdate(row)" matTooltip="Actualizar stock">
+                <button mat-icon-button color="primary" (click)="openStockUpdate(row)" matTooltip="Ajustar stock">
                   <mat-icon>edit</mat-icon>
                 </button>
               </td>
@@ -237,7 +368,14 @@ export class TransferFormComponent {
               <td class="mat-cell" [attr.colspan]="columns.length">
                 <div class="empty-state">
                   <mat-icon>warehouse</mat-icon>
-                  <p>{{ selectedBranch ? 'Sin inventario para esta sucursal' : 'Selecciona una sucursal' }}</p>
+                  @if (!selectedBranch) {
+                    <p>Selecciona una sucursal</p>
+                  } @else {
+                    <p>No hay materiales con stock registrado en esta sucursal</p>
+                    <button mat-stroked-button color="primary" (click)="openStockEntry()" style="margin-top:8px">
+                      <mat-icon>add</mat-icon> Ingresar el primer stock
+                    </button>
+                  }
                 </div>
               </td>
             </tr>
@@ -266,7 +404,10 @@ export class InventoryComponent implements OnInit {
   ngOnInit(): void {
     this.api.getBranches().subscribe(branches => {
       this.branches.set(branches);
-      if (branches.length > 0) { this.selectedBranch = branches[0].id; this.loadInventory(); }
+      if (branches.length > 0) {
+        this.selectedBranch = branches[0].id;
+        this.loadInventory();
+      }
     });
     this.api.getAllMaterials().subscribe(mats => this.allMaterials = mats);
   }
@@ -290,6 +431,16 @@ export class InventoryComponent implements OnInit {
     this.dataSource.data = s
       ? this.allInventory.filter(i => i.materialName?.toLowerCase().includes(s) || i.materialCode?.toLowerCase().includes(s))
       : [...this.allInventory];
+  }
+
+  openStockEntry(): void {
+    if (!this.selectedBranch) return;
+    const branch = this.branches().find(b => b.id === this.selectedBranch);
+    const ref = this.dialog.open(StockEntryFormComponent, {
+      width: '440px',
+      data: { branchId: this.selectedBranch, branchName: branch?.name, materials: this.allMaterials }
+    });
+    ref.afterClosed().subscribe(result => { if (result) this.loadInventory(); });
   }
 
   openStockUpdate(item: any): void {

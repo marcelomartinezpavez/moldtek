@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;21e8237c82ce9d762f513b2c9f68f777be8b4eca042dd6aaad24b2be24b8fcd0;C:/Proyectos/moldtek/frontend/src/app/modules/company/company.component.ts"],
+  "sourcesContent": ["@media (max-width:900px) { div[style*=\"grid-template-columns:1fr 1fr\"] { grid-template-columns:1fr !important; } }"],
+  "mappings": ";AAAA,QAAO,WAAW;AAAS,KAAG,CAAC;AAA0C,2BAAsB;AAAgB;AAAE;",
+  "names": []
+}

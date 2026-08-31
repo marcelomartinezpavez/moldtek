@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;1f4a40da44fa0344371c6f30b6f0ea06b1d3d72b69956030280ba1cd8711d410;C:/Proyectos/moldtek/frontend/src/app/layout/main-layout/main-layout.component.ts"],
+  "sourcesContent": ["\n    .sidenav-container { height: 100vh; }\n    .app-sidenav { width: 260px; background: #1B5E20; }\n    .main-content { min-height: calc(100vh - 64px); background: #f5f5f5; }\n  "],
+  "mappings": ";AACI,CAAC;AAAoB,UAAQ;AAAO;AACpC,CAAC;AAAc,SAAO;AAAO,cAAY;AAAS;AAClD,CAAC;AAAe,cAAY,KAAK,MAAM,EAAE;AAAO,cAAY;AAAS;",
+  "names": []
+}
